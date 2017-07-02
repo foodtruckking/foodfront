@@ -1,24 +1,22 @@
 <template>
-  <transition name="side-bar">
-    <div class="side-bar">
+  <div class="side-bar">
 
-      <div class="common-header">
+    <div class="common-header">
 
-        <a class="button"
-          @click="onClickBackButton()">
-          back
-        </a>
+      <a class="button"
+        @click="onClickBackButton()">
+        back
+      </a>
 
-        <div class="content">
-          side-bar
-        </div>
-
-        <a class="button"></a>
-
+      <div class="content">
+        side-bar
       </div>
 
+      <a class="button"></a>
+
     </div>
-  </transition>
+
+  </div>
 </template>
 
 <script>

@@ -21,10 +21,16 @@
 
     <map-controller />
 
-    <div v-if="isSideBarShown"
-      class="side-bar-wrapper">
-      <side-bar />
-    </div>
+    <transition name="side-bar-cover">
+      <div v-if="isSideBarShown"
+        class="side-bar-cover" />
+    </transition>
+
+    <transition name="side-bar-wrapper">
+      <div v-if="isSideBarShown" class="side-bar-wrapper">
+        <side-bar />
+      </div>
+    </transition>
 
     <div v-if="isDescriptionShown"
       class="description-wrapper">
@@ -74,12 +80,16 @@
     height: 100%;
   }
 
-  .side-bar-wrapper {
+  .side-bar-cover, .side-bar-wrapper {
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
+  }
+
+  .side-bar-cover {
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .description-wrapper {
@@ -88,5 +98,26 @@
     bottom: 0;
     right: 0;
     height: $description-height;
+  }
+
+  /* transition */
+  .side-bar-cover-enter-active,
+  .side-bar-cover-leave-active {
+    transition: opacity .3s
+  }
+
+  .side-bar-cover-enter,
+  .side-bar-cover-leave-to {
+    opacity: 0.01;
+  }
+
+  .side-bar-wrapper-enter-active,
+  .side-bar-wrapper-leave-active {
+    transition: transform .3s
+  }
+
+  .side-bar-wrapper-enter,
+  .side-bar-wrapper-leave-to {
+    transform: translateX(100%);
   }
 </style>
