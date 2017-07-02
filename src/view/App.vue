@@ -1,23 +1,11 @@
 <template>
   <div id="app">
 
-    <div class="common-header">
-
-      <a class="button"
-        @click="onClickLeftMenuButton()">
-        left
-      </a>
-
-      <div class="content">
-        title
-      </div>
-
-      <a class="button"
-        @click="onClickRightMenuButton()">
-        right
-      </a>
-
-    </div>
+    <header-view
+      content="home"
+      rightTitle="side-bar"
+      @onClickRightButton="onClickHeaderRightButton()"
+      />
 
     <map-controller />
 
@@ -41,12 +29,14 @@
 </template>
 
 <script>
+  import HeaderView      from 'comp/HeaderView.vue'
   import MapController   from 'comp/MapController.vue'
   import SideBar         from 'comp/SideBar.vue'
   import DescriptionView from 'comp/DescriptionView.vue'
 
   export default {
     components: {
+      HeaderView,
       MapController,
       SideBar,
       DescriptionView,
@@ -61,10 +51,7 @@
       ...Vuex.mapMutations([
         'setShownSideBar',
       ]),
-      onClickLeftMenuButton() {
-        
-      },
-      onClickRightMenuButton() {
+      onClickHeaderRightButton() {
         this.setShownSideBar(true)
       },
     },

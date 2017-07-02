@@ -1,31 +1,27 @@
 <template>
   <div class="side-bar">
 
-    <div class="common-header">
-
-      <a class="button"
-        @click="onClickBackButton()">
-        back
-      </a>
-
-      <div class="content">
-        side-bar
-      </div>
-
-      <a class="button"></a>
-
-    </div>
+    <header-view
+      content="side-bar"
+      leftTitle="back"
+      @onClickLeftButton="onClickHeaderLeftButton()"
+      />
 
   </div>
 </template>
 
 <script>
+  import HeaderView from 'comp/HeaderView.vue'
+
   export default {
+    components: {
+      HeaderView,
+    },
     methods: {
       ...Vuex.mapMutations([
         'setShownSideBar',
       ]),
-      onClickBackButton() {
+      onClickHeaderLeftButton() {
         this.setShownSideBar(false)
       },
     },
