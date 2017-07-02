@@ -4,7 +4,7 @@
     <header-view
       content="detail-view"
       leftTitle="back"
-      @onClickLeftButton="onClickHeaderLeftButton()"
+      @onClickLeftButton="onClickBackButton()"
       />
 
   </div>
@@ -21,7 +21,7 @@
       ...Vuex.mapMutations([
         'setShownDetail',
       ]),
-      onClickHeaderLeftButton() {
+      onClickBackButton() {
         this.setShownDetail(false)
       },
     },

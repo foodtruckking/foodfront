@@ -3,8 +3,8 @@
 
     <header-view
       content="home"
-      rightTitle="side-bar"
-      @onClickRightButton="onClickHeaderRightButton()"
+      rightTitle="list"
+      @onClickRightButton="onClickListButton()"
       />
 
     <map-controller
@@ -90,7 +90,7 @@
           }
         }
       },
-      onClickHeaderRightButton() {
+      onClickListButton() {
         this.setShownList(true)
       },
     },

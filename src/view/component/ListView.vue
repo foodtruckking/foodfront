@@ -4,9 +4,9 @@
     <header-view
       content="list-view"
       leftTitle="back"
-      @onClickLeftButton="onClickHeaderLeftButton()"
+      @onClickLeftButton="onClickBackButton()"
       rightTitle="filter"
-      @onClickRightButton="onClickHeaderRightButton()"
+      @onClickRightButton="onClickFilterButton()"
       />
 
     <!-- testable -->
@@ -29,10 +29,10 @@
       ...Vuex.mapMutations([
         'setShownList',
       ]),
-      onClickHeaderLeftButton() {
+      onClickBackButton() {
         this.setShownList(false)
       },
-      onClickHeaderRightButton() {
+      onClickFilterButton() {
 
       },
     },
