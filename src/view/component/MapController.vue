@@ -1,10 +1,14 @@
 <template>
   <div ref="map-controller"
-    class="map-controller" />
+    class="map-controller disable-scrolling"
+    :class="isDisabled ? 'disabled' : ''" />
 </template>
 
 <script>
   export default {
+    props: [
+      'isDisabled',
+    ],
     mounted() {
       window.$map = this
     },
@@ -33,5 +37,9 @@
     left: 0;
     bottom: 0;
     right: 0;
+  }
+
+  .disabled {
+    pointer-events: none;
   }
 </style>

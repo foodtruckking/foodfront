@@ -7,7 +7,8 @@
       @onClickRightButton="onClickHeaderRightButton()"
       />
 
-    <map-controller />
+    <map-controller
+      :isDisabled="isListShown || isDetailShown" />
 
     <div v-if="isDescShown"
       class="description-wrapper">
@@ -63,10 +64,32 @@
         isDetailShown: s => s.ui.detail === true,
       }),
     },
+    mounted() {
+      this.attachScrollEventListener()
+    },
     methods: {
       ...Vuex.mapMutations([
         'setShownList',
       ]),
+      attachScrollEventListener() {
+        document.ontouchmove = (event) => {
+          let isTouchAllowed = true
+          let target = event.target
+
+          while (target !== null) {
+            if (target.classList && target.classList.contains('disable-scrolling') ) {
+
+              isTouchAllowed = false
+              break
+            }
+            target = target.parentNode
+          }
+
+          if (!isTouchAllowed) {
+            event.preventDefault()
+          }
+        }
+      },
       onClickHeaderRightButton() {
         this.setShownList(true)
       },
