@@ -9,15 +9,21 @@
       @onClickRightButton="onClickHeaderRightButton()"
       />
 
+    <!-- testable -->
+    <list-item v-for="i in 20"
+      :key="`list-item-${i}`" />
+
   </div>
 </template>
 
 <script>
   import HeaderView from 'comp/HeaderView.vue'
+  import ListItem   from 'comp/ListItem.vue'
 
   export default {
     components: {
       HeaderView,
+      ListItem,
     },
     methods: {
       ...Vuex.mapMutations([
@@ -34,8 +40,13 @@
 </script>
 
 <style scoped lang="scss">
+  @import '~scss/defines';
+
   .list-view {
     height: 100%;
     background-color: white;
+    padding-bottom: $list-item-spacing;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 </style>
