@@ -32,12 +32,10 @@
 <style scoped lang="scss">
   @import '~scss/defines';
 
-  $item-height: 120px;
   $thumbnail-width: 140px;
 
   .list-item {
-    margin-top: $list-item-spacing;
-    height: $item-height;
+    height: $list-item-height;
     display: flex;
     flex-direction: row;
     align-items: stretch;

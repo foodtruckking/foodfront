@@ -14,6 +14,9 @@ const getters = {
 }
 
 const mutations = {
+  setShownDesc(state, isShown) {
+    state.ui.desc = isShown === true
+  },
   setShownInfo(state, isShown) {
     state.ui.info = isShown === true
   },

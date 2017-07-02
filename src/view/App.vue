@@ -12,10 +12,19 @@
     <map-controller
       :isDisabled="isListShown || isDetailShown" />
 
-    <div v-if="isDescShown"
-      class="description-wrapper">
-      <description-view />
-    </div>
+    <!-- description -->
+    <transition name="description-wrapper">
+      <div v-if="isDescShown"
+        class="description-wrapper">
+
+        <list-item @onClickItem="onClickItem()" />
+
+        <a class="footer" @click="onClickItemList()">
+          <div>see more items</div>
+        </a>
+
+      </div>
+    </transition>
 
     <!-- info view -->
     <transition name="content-cover">
@@ -65,18 +74,18 @@
 <script>
   import HeaderView      from 'comp/HeaderView.vue'
   import MapController   from 'comp/MapController.vue'
-  import DescriptionView from 'comp/DescriptionView.vue'
   import InfoView        from 'comp/InfoView.vue'
   import ListView        from 'comp/ListView.vue'
+  import ListItem        from 'comp/ListItem.vue'
   import DetailView      from 'comp/DetailView.vue'
 
   export default {
     components: {
       HeaderView,
       MapController,
-      DescriptionView,
       InfoView,
       ListView,
+      ListItem,
       DetailView,
     },
     computed: {
@@ -92,8 +101,10 @@
     },
     methods: {
       ...Vuex.mapMutations([
+        'setShownDesc',
         'setShownInfo',
         'setShownList',
+        'setShownDetail',
       ]),
       attachScrollEventListener() {
         document.ontouchmove = (event) => {
@@ -114,6 +125,14 @@
           }
         }
       },
+      onClickItem() {
+        this.setShownDesc(false)
+        this.setShownDetail(true)
+      },
+      onClickItemList() {
+        this.setShownDesc(false)
+        this.setShownList(true)
+      },
       onClickCover() {
         this.setShownInfo(false)
         this.setShownList(false)
@@ -131,10 +150,31 @@
 <style scoped lang="scss">
   @import '~scss/defines';
 
+  $desc-footer-height: 30px;
+
   #app {
     position: relative;
     width: 100%;
     height: 100%;
+  }
+
+  .description-wrapper {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: calc(#{$list-item-height} + #{$desc-footer-height});
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    .footer {
+      height: $desc-footer-height;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   .content-cover, .content-wrapper {
@@ -153,15 +193,17 @@
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  .description-wrapper {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: $description-height;
+  /* transition */
+  .description-wrapper-enter-active,
+  .description-wrapper-leave-active {
+    transition: transform .3s
   }
 
-  /* transition */
+  .description-wrapper-enter,
+  .description-wrapper-leave-to {
+    transform: translateY(100%);
+  }
+
   .content-cover-enter-active,
   .content-cover-leave-active {
     transition: opacity .3s

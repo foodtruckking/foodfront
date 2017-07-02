@@ -10,9 +10,13 @@
       />
 
     <!-- testable -->
-    <list-item v-for="i in 20"
-      :key="`list-item-${i}`"
-      @onClickItem="onClickItem()" />
+    <div class="item-wrapper">
+
+      <list-item v-for="i in 20"
+        :key="`list-item-${i}`"
+        @onClickItem="onClickItem()" />
+      
+    </div>
 
   </div>
 </template>
@@ -50,8 +54,15 @@
   .list-view {
     height: 100%;
     background-color: white;
-    padding-bottom: $list-item-spacing;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .item-wrapper {
+    padding-bottom: $list-item-spacing;
+
+    & > a {
+      margin-top: $list-item-spacing;
+    }
   }
 </style>
