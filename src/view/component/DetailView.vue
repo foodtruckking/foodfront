@@ -19,10 +19,10 @@
     },
     methods: {
       ...Vuex.mapMutations([
-        'setShownDetailView',
+        'setShownDetail',
       ]),
       onClickHeaderLeftButton() {
-        this.setShownDetailView(false)
+        this.setShownDetail(false)
       },
     },
   }

@@ -9,29 +9,31 @@
 
     <map-controller />
 
-    <div v-if="isDescriptionShown"
+    <div v-if="isDescShown"
       class="description-wrapper">
       <description-view />
     </div>
 
+    <!-- list view -->
     <transition name="content-cover">
-      <div v-if="isSideBarShown"
+      <div v-if="isListShown"
         class="content-cover" />
     </transition>
 
     <transition name="content-wrapper">
-      <div v-if="isSideBarShown" class="content-wrapper">
-        <side-bar />
+      <div v-if="isListShown" class="content-wrapper">
+        <list-view />
       </div>
     </transition>
 
+    <!-- detail view -->
     <transition name="content-cover">
-      <div v-if="isDetailViewShown"
+      <div v-if="isDetailShown"
         class="content-cover" />
     </transition>
 
     <transition name="content-wrapper">
-      <div v-if="isDetailViewShown" class="content-wrapper">
+      <div v-if="isDetailShown" class="content-wrapper">
         <detail-view />
       </div>
     </transition>
@@ -43,7 +45,7 @@
   import HeaderView      from 'comp/HeaderView.vue'
   import MapController   from 'comp/MapController.vue'
   import DescriptionView from 'comp/DescriptionView.vue'
-  import SideBar         from 'comp/SideBar.vue'
+  import ListView        from 'comp/ListView.vue'
   import DetailView      from 'comp/DetailView.vue'
 
   export default {
@@ -51,22 +53,22 @@
       HeaderView,
       MapController,
       DescriptionView,
-      SideBar,
+      ListView,
       DetailView,
     },
     computed: {
       ...Vuex.mapState({
-        isDescriptionShown: s => s.ui.description === true,
-        isSideBarShown: s => s.ui.sideBar === true,
-        isDetailViewShown: s => s.ui.detailView === true,
+        isDescShown: s => s.ui.desc === true,
+        isListShown: s => s.ui.list === true,
+        isDetailShown: s => s.ui.detail === true,
       }),
     },
     methods: {
       ...Vuex.mapMutations([
-        'setShownSideBar',
+        'setShownList',
       ]),
       onClickHeaderRightButton() {
-        this.setShownSideBar(true)
+        this.setShownList(true)
       },
     },
   }

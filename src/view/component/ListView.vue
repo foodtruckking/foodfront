@@ -1,10 +1,12 @@
 <template>
-  <div class="side-bar">
+  <div class="list-view">
 
     <header-view
-      content="side-bar"
+      content="list-view"
       leftTitle="back"
       @onClickLeftButton="onClickHeaderLeftButton()"
+      rightTitle="filter"
+      @onClickRightButton="onClickHeaderRightButton()"
       />
 
   </div>
@@ -19,17 +21,20 @@
     },
     methods: {
       ...Vuex.mapMutations([
-        'setShownSideBar',
+        'setShownList',
       ]),
       onClickHeaderLeftButton() {
-        this.setShownSideBar(false)
+        this.setShownList(false)
+      },
+      onClickHeaderRightButton() {
+
       },
     },
   }
 </script>
 
 <style scoped lang="scss">
-  .side-bar {
+  .list-view {
     height: 100%;
     background-color: white;
   }

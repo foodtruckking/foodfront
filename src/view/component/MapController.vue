@@ -1,5 +1,6 @@
 <template>
-  <div ref="map-controller" class="map-controller"></div>
+  <div ref="map-controller"
+    class="map-controller" />
 </template>
 
 <script>
@@ -11,11 +12,13 @@
       initMap() {
         const wrapper = this.$refs['map-controller']
 
-        window.$map = new google.maps.Map(wrapper, {
+        const map = new google.maps.Map(wrapper, {
           center: {lat: 33.396, lng: 126.570},
           zoom: 10,
           disableDefaultUI: true,
         })
+
+        window.$map = map
       },
     },
   }
