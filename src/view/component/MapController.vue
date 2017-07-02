@@ -1,6 +1,5 @@
 <template>
-  <div ref="map-controller" class="map-controller">
-  </div>
+  <div ref="map-controller" class="map-controller"></div>
 </template>
 
 <script>

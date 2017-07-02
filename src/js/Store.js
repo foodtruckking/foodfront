@@ -1,7 +1,10 @@
 Vue.use(Vuex)
 
 const state = {
-
+  ui: {
+    sideBar: false,
+    description: false,
+  },
 }
 
 const getters = {
