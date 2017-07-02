@@ -11,7 +11,8 @@
 
     <!-- testable -->
     <list-item v-for="i in 20"
-      :key="`list-item-${i}`" />
+      :key="`list-item-${i}`"
+      @onClickItem="onClickItem()" />
 
   </div>
 </template>
@@ -28,12 +29,16 @@
     methods: {
       ...Vuex.mapMutations([
         'setShownList',
+        'setShownDetail',
       ]),
       onClickBackButton() {
         this.setShownList(false)
       },
       onClickFilterButton() {
 
+      },
+      onClickItem() {
+        this.setShownDetail(true)
       },
     },
   }

@@ -23,7 +23,7 @@
   export default {
     methods: {
       onClickItem() {
-
+        this.$emit('onClickItem')
       },
     },
   }
