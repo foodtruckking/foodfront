@@ -1,10 +1,22 @@
 <template>
   <div id="app">
 
-    <div class="header">
-      <a @click="onClickLeftMenuButton()">left</a>
-      <div>title</div>
-      <a @click="onClickRightMenuButton()">right</a>
+    <div class="common-header">
+
+      <a class="button"
+        @click="onClickLeftMenuButton()">
+        left
+      </a>
+
+      <div class="content">
+        title
+      </div>
+
+      <a class="button"
+        @click="onClickRightMenuButton()">
+        right
+      </a>
+
     </div>
 
     <map-controller />
@@ -57,19 +69,6 @@
     position: relative;
     width: 100%;
     height: 100%;
-  }
-
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: $header-height;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid $color-lightgray;
   }
 
   .side-bar-wrapper {
