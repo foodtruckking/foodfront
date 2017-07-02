@@ -27,3 +27,27 @@ npm run vue
 ```sh
 npm start
 ```
+
+## build script
+
+1. semantic-ui 소스 빌드
+
+- dest: ./semantic/dist
+
+```sh
+npm run build-semantic
+```
+
+2. vuejs 소스 빌드
+
+- dest: ./dist
+
+```sh
+npm run build-vue
+```
+
+3. npm run build-semantic && npm run build-vue
+
+```sh
+npm run build
+```
