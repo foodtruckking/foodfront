@@ -1,6 +1,8 @@
 import 'semantic/semantic.min.css'
 import 'semantic/semantic.min.js'
 
+import 'scss/index.scss'
+
 import Vue from 'vue'
 import Store from 'js/Store.js'
 import App from 'view/App.vue'
