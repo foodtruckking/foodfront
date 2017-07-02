@@ -2,8 +2,9 @@ Vue.use(Vuex)
 
 const state = {
   ui: {
-    sideBar: false,
     description: false,
+    sideBar: false,
+    detailView: false,
   },
 }
 
@@ -13,7 +14,12 @@ const getters = {
 
 const mutations = {
   setShownSideBar(state, isShown) {
+    state.ui.description = false
     state.ui.sideBar = isShown === true
+  },
+  setShownDetailView(state, isShown) {
+    state.ui.description = false
+    state.ui.detailView = isShown === true
   },
 }
 

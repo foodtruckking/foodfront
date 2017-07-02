@@ -9,21 +9,32 @@
 
     <map-controller />
 
-    <transition name="side-bar-cover">
-      <div v-if="isSideBarShown"
-        class="side-bar-cover" />
-    </transition>
-
-    <transition name="side-bar-wrapper">
-      <div v-if="isSideBarShown" class="side-bar-wrapper">
-        <side-bar />
-      </div>
-    </transition>
-
     <div v-if="isDescriptionShown"
       class="description-wrapper">
       <description-view />
     </div>
+
+    <transition name="content-cover">
+      <div v-if="isSideBarShown"
+        class="content-cover" />
+    </transition>
+
+    <transition name="content-wrapper">
+      <div v-if="isSideBarShown" class="content-wrapper">
+        <side-bar />
+      </div>
+    </transition>
+
+    <transition name="content-cover">
+      <div v-if="isDetailViewShown"
+        class="content-cover" />
+    </transition>
+
+    <transition name="content-wrapper">
+      <div v-if="isDetailViewShown" class="content-wrapper">
+        <detail-view />
+      </div>
+    </transition>
 
   </div>
 </template>
@@ -31,20 +42,23 @@
 <script>
   import HeaderView      from 'comp/HeaderView.vue'
   import MapController   from 'comp/MapController.vue'
-  import SideBar         from 'comp/SideBar.vue'
   import DescriptionView from 'comp/DescriptionView.vue'
+  import SideBar         from 'comp/SideBar.vue'
+  import DetailView      from 'comp/DetailView.vue'
 
   export default {
     components: {
       HeaderView,
       MapController,
-      SideBar,
       DescriptionView,
+      SideBar,
+      DetailView,
     },
     computed: {
       ...Vuex.mapState({
-        isSideBarShown: s => s.ui.sideBar === true,
         isDescriptionShown: s => s.ui.description === true,
+        isSideBarShown: s => s.ui.sideBar === true,
+        isDetailViewShown: s => s.ui.detailView === true,
       }),
     },
     methods: {
@@ -67,7 +81,7 @@
     height: 100%;
   }
 
-  .side-bar-cover, .side-bar-wrapper {
+  .content-cover, .content-wrapper {
     position: fixed;
     top: 0;
     left: 0;
@@ -75,7 +89,7 @@
     right: 0;
   }
 
-  .side-bar-cover {
+  .content-cover {
     background-color: rgba(0, 0, 0, 0.5);
   }
 
@@ -88,23 +102,23 @@
   }
 
   /* transition */
-  .side-bar-cover-enter-active,
-  .side-bar-cover-leave-active {
+  .content-cover-enter-active,
+  .content-cover-leave-active {
     transition: opacity .3s
   }
 
-  .side-bar-cover-enter,
-  .side-bar-cover-leave-to {
+  .content-cover-enter,
+  .content-cover-leave-to {
     opacity: 0.01;
   }
 
-  .side-bar-wrapper-enter-active,
-  .side-bar-wrapper-leave-active {
+  .content-wrapper-enter-active,
+  .content-wrapper-leave-active {
     transition: transform .3s
   }
 
-  .side-bar-wrapper-enter,
-  .side-bar-wrapper-leave-to {
+  .content-wrapper-enter,
+  .content-wrapper-leave-to {
     transform: translateX(100%);
   }
 </style>
