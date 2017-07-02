@@ -1,0 +1,7 @@
+*.sublime-workspace
+*.sublime-project
+npm-debug.log*
+sftp-config.json
+node_modules/
+dist/
+semantic/
