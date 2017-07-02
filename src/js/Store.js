@@ -12,7 +12,9 @@ const getters = {
 }
 
 const mutations = {
-
+  setShownSideBar(state, isShown) {
+    state.ui.sideBar = isShown === true
+  },
 }
 
 const actions = {

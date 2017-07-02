@@ -52,11 +52,14 @@
       }),
     },
     methods: {
+      ...Vuex.mapMutations([
+        'setShownSideBar',
+      ]),
       onClickLeftMenuButton() {
         
       },
       onClickRightMenuButton() {
-
+        this.setShownSideBar(true)
       },
     },
   }
