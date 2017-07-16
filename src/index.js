@@ -1,5 +1,4 @@
 import 'semantic/semantic.min.css'
-import 'semantic/semantic.min.js'
 
 import 'scss/index.scss'
 

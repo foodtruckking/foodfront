@@ -5,7 +5,8 @@
     "vue": "webpack-dev-server --host=0.0.0.0 --hot --inline",
     "build": "npm run build-semantic && npm run build-vue",
     "build-semantic": "gulp build",
-    "build-vue": "cross-env NODE_ENV=production webpack --hide-modules"
+    "build-vue": "cross-env NODE_ENV=production webpack --hide-modules",
+    "postinstall": "cd semantic && gulp build"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -21,7 +22,7 @@
     "lodash": "^4.17.4",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.5",
-    "semantic-ui": "^2.2.10",
+    "semantic-ui": "2.2.11",
     "style-loader": "^0.18.2",
     "vue": "^2.3.3",
     "vue-loader": "^12.2.1",
